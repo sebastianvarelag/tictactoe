@@ -1,4 +1,4 @@
-import GamePage from "./game/pages/GamePage"
+import { GamePage } from "./game/pages"
 
 const GameApp = () => {
   return (

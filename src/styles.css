@@ -1,19 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/digital-numbers');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Inria Sans', sans-serif;
 }
 
 body {
-  font-family: 'Inria Sans', sans-serif;
   background-color: #f7f7f7;
   padding: 0px 50px;
 }
 
+/* Header */
+
 .header{
   width: auto;
-  border-bottom: 1px solid #021526;
+  border-bottom: 2px solid #0215262d;
   user-select: none;
 }
 
@@ -33,5 +37,112 @@ body {
   color: #F0A8D0;
 }
 .title h1 span:nth-child(3){
+  color: #6EACDA;
+}
+
+button{
+  border: none;
+  background-color: transparent;
+}
+
+/* Container game */
+
+.game-container{
+  display: block;
+  width: 25%;
+  margin: 2rem auto;
+}
+
+/* Turns */
+
+.turn__container{
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.turn__list{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.turn__item{
+  border: 4px solid transparent;
+  border-radius: 24px;
+  padding: 12px 32px;
+  font-size: 2rem;
+}
+
+.turn__item:not(:nth-child(2)){
+  opacity: .2;
+}
+
+.turn__item:first-child{
   color: #91DDCF;
+  font-weight: bolder;
+  border-bottom-color: #91DDCF;
+}
+
+.turn__item:last-child{
+  color: #FF8A8A;
+  font-weight: bolder;
+  border-bottom-color: #FF8A8A;
+}
+
+.turn__item.active{
+  opacity: 1;
+}
+
+.game{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.row-square .button__square{
+  padding: 20px;
+  font-size: 3.5rem;
+  color: #91DDCF;
+}
+
+.turn__score{
+  font-family: 'Digital Numbers', sans-serif;
+}
+
+.row-square .button__square span{
+  width: 50px;
+  display: block;
+}
+
+
+.row-square .button__square:nth-child(2){
+  border-left: 3px solid #6EACDA;
+  border-right: 3px solid #6EACDA;
+}
+
+.row-square:not(:last-child) .button__square{
+  border-bottom: 3px solid #6EACDA;
+}
+
+/* Button */
+
+.button__group .button{
+  border-radius: 24px;
+  border: solid 1px #6EACDA;
+  color: #6EACDA;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding: 10px 40px;
+  transition: all .2s;
+}
+
+.button__group .button:hover{
+  background-color: #6EACDA;
+  color: #fff;
 }

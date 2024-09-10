@@ -1,5 +1,5 @@
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className="header">
       <div className="title">
@@ -8,5 +8,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header
