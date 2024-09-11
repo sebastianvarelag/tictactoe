@@ -35,6 +35,10 @@ export const useGameStore = () => {
       if(currentSquares[a] && currentSquares[a] === currentSquares[b] && currentSquares[a] === currentSquares[c]){
         return dispatch(setWinner(currentSquares[a]));
       }
+
+      if(currentSquares.every(square => square!== null)){
+        return dispatch(setWinner('DRAW'));
+      }
     }
     return dispatch(setWinner(null));
   }
