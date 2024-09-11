@@ -10,7 +10,6 @@
 
 body {
   background-color: #f7f7f7;
-  padding: 0px 50px;
 }
 
 /* Header */
@@ -19,6 +18,7 @@ body {
   width: auto;
   border-bottom: 2px solid #0215262d;
   user-select: none;
+  margin: 0px 50px;
 }
 
 .title{
@@ -48,6 +48,7 @@ button{
 /* Container game */
 
 .game-container{
+  transition: all .5s ease-in;
   display: block;
   width: fit-content;
   margin: 2rem auto;
@@ -162,7 +163,7 @@ button{
 
 /* Button */
 
-.button__group .button{
+.button__group .button, .modal__container .button__modal{
   border-radius: 24px;
   border: solid 1px #6EACDA;
   color: #6EACDA;
@@ -174,9 +175,10 @@ button{
   margin-top: 3rem;
   padding: 10px 40px;
   transition: all .2s;
+  user-select: none;
 }
 
-.button__group .button:hover{
+.button__group .button:hover, .modal__container .button__modal:hover{
   background-color: #6EACDA;
   color: #fff;
 }
@@ -219,4 +221,98 @@ button{
 
 .modal__content p span{
   font-weight: bolder;
+}
+
+.modal__container.modal-open{
+  opacity: 1;
+  animation: fadeIn .3s ease-in; 
+  visibility: visible;
+}
+
+
+.modal__container.modal-close{
+  opacity: 0;
+  animation: fadeOut .3s ease-in; 
+  visibility: hidden;
+}
+
+.modal__container .button__modal{
+  margin-top: 1.5rem;
+}
+
+@keyframes fadeIn {  
+  from {  
+    opacity:0;  
+    visibility: hidden;
+  }  
+
+  to {  
+    opacity:1;  
+    visibility: visible;
+  }  
+}
+
+@keyframes fadeOut {  
+  from {  
+    opacity:1;  
+    visibility: visible;
+  }  
+
+  to {  
+    opacity:0;  
+    visibility: hidden;
+  }  
+}
+
+/* Loading */
+
+.loading{
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Preloader */
+.loading__container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #6eacda;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+.loader div {
+  animation: loader 1s linear infinite;
+  top: 100px;
+  left: 100px;
+}
+.loading-spinner-rolling {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+}
+.loader {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+.loader div {
+  box-sizing: content-box;
+}
+
+@keyframes loader {
+  0% { transform: translate(-50%,-50%) rotate(0deg); }
+  100% { transform: translate(-50%,-50%) rotate(360deg); }
 }
