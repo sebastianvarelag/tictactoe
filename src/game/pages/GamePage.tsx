@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { useGameStore } from "../../hooks"
 import { Header, Score, Square } from "../components"
+import { Modal } from "../../ui/Modal";
 
 export const GamePage = () => {
 
-  const { currentSquares, currentTurn, handleClickSquare, handleResetSquares } = useGameStore();
+  const { currentSquares, currentTurn, handleClickSquare, handleResetSquares, determineWinner } = useGameStore();
+
+  useEffect(() => {
+    determineWinner(currentSquares);
+  }, [currentSquares])
+  
 
   return (
     <>
@@ -31,6 +38,7 @@ export const GamePage = () => {
           <button className="button" onClick={handleResetSquares}>RESTART</button>
         </div>
       </div>
+      <Modal/>
     </>
   )
 }

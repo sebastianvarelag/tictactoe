@@ -30,6 +30,14 @@ const gameSlice = createSlice({
         state.currentTurn = true;
       }
     },
+    setWinner(state, action: PayloadAction<string | null>) {
+      state.winner = action.payload;
+      if(action.payload == 'X'){
+        state.score[0]++;
+      }else if(action.payload == 'O'){
+        state.score[1]++;
+      }
+    },
     resetSquares(state){
       state.winner = null;
       state.currentTurn = true;
@@ -39,4 +47,4 @@ const gameSlice = createSlice({
 })
 
 export default gameSlice
-export const { setCurrentSquares, resetSquares } = gameSlice.actions
+export const { setCurrentSquares, setWinner, resetSquares } = gameSlice.actions
