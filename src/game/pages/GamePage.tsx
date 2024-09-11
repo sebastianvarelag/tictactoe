@@ -5,17 +5,17 @@ import { Modal } from "../../ui/Modal";
 
 export const GamePage = () => {
 
-  const { currentSquares, currentTurn, handleClickSquare, handleResetSquares, determineWinner } = useGameStore();
-
+  const { currentSquares, currentTurn, loading, handleClickSquare, handleResetSquares, determineWinner } = useGameStore();
+  
   useEffect(() => {
-    determineWinner(currentSquares);
+    determineWinner(currentSquares)  
   }, [currentSquares])
   
 
   return (
     <>
       <Header/>
-      <div className="game-container">
+      <div className={`game-container${loading ? ' loading' : ''}`}>
         <Score/>
         <div className="game">
           <div className="row-square">

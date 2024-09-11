@@ -1,14 +1,13 @@
-import { resetSquares, setCurrentSquares, setWinner } from "../store/game/gameSlice";
+import { closeModal, resetSquares, setCurrentSquares, setWinner } from "../store/game/gameSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 
 export const useGameStore = () => {
   
-  const {score, currentTurn, currentSquares} = useAppSelector(state => state.game)
+  const {winner, score, currentTurn, currentSquares, modalOpen, loading} = useAppSelector(state => state.game)
 
   const dispatch = useAppDispatch();
 
   const handleClickSquare = (number: number) => {
-    
     if(currentSquares[number - 1] === null){
       dispatch(setCurrentSquares(number - 1));
     }
@@ -40,14 +39,25 @@ export const useGameStore = () => {
     return dispatch(setWinner(null));
   }
 
+  const handleCloseModal = () =>{
+    dispatch(closeModal());
+    setTimeout(() => {
+      dispatch(resetSquares());
+    }, 1000);
+  }
+
   return {
+    winner,
+    loading,
     score,
     currentTurn,
     currentSquares,
+    modalOpen,
 
     // functions
     handleClickSquare,
     handleResetSquares,
-    determineWinner
+    determineWinner,
+    handleCloseModal
   }
 }
