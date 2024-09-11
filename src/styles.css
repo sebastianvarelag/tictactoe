@@ -180,3 +180,43 @@ button{
   background-color: #6EACDA;
   color: #fff;
 }
+
+/* Modal */
+
+.modal__container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.227);
+  display: flex;
+  justify-content: center;
+}
+
+.modal__content{
+  position: absolute;
+  top: 20%;
+  width: 75%;
+  height: 20%;
+  max-width: 500px;
+  min-height: 250px;
+  text-align: center;
+  align-content: center;
+  background: white;
+  padding: 10px 20px;
+  border: 3px solid #6EACDA;
+  border-radius: 50px;
+}
+
+.modal__content h2{
+  font-size: 2rem;
+}
+
+.modal__content p{
+  font-size: 1.5rem;
+}
+
+.modal__content p span{
+  font-weight: bolder;
+}
