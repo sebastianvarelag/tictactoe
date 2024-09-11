@@ -74,6 +74,10 @@ button{
   font-size: 2rem;
 }
 
+.turn__item.active{
+  transition: opacity .5s;
+}
+
 .turn__item:not(:nth-child(2)){
   opacity: .2;
 }
@@ -101,14 +105,30 @@ button{
   place-items: center;
 }
 
+.row-square{
+  display: flex;
+}
+
 .row-square .button__square{
   padding: 20px;
   font-size: 3.5rem;
   color: #91DDCF;
+  user-select: none;
+}
+
+.button__square.equis{
+  color: #91DDCF;
+}
+.button__square.circle{
+  color: #FF8A8A;
 }
 
 .turn__score{
   font-family: 'Digital Numbers', sans-serif;
+}
+
+.button__square:focus{
+  outline: none;
 }
 
 .row-square .button__square span{
@@ -117,14 +137,27 @@ button{
   display: block;
 }
 
+.row-square .button__square span.circle::after, .row-square .button__square span.equis::after{
+  content: ' ';
+}
 
-.row-square .button__square:nth-child(2){
-  border-left: 3px solid #6EACDA;
-  border-right: 3px solid #6EACDA;
+.row-square .button__square span.circle:hover::after{
+  content: 'O';
+  color: #FF8A8A;
+}
+
+.row-square .button__square span.equis:hover::after{
+  content: 'X';
+  color: #91DDCF;
 }
 
 .row-square:not(:last-child) .button__square{
-  border-bottom: 3px solid #6EACDA;
+  border-bottom: 5px solid #6EACDA;
+}
+
+.row-square .button__square:nth-child(2){
+  border-left: 5px solid #6EACDA;
+  border-right: 5px solid #6EACDA;
 }
 
 /* Button */
