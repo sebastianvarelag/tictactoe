@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 
 interface gameState {
   winner: string | null;
   currentTurn: boolean;
   score: [number, number];
-  currentSquares: Array<number>
+  currentSquares: Array<string>
 }
 
 const initialState: gameState = { 
@@ -19,11 +19,24 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    // incrementByAmount(state, action: PayloadAction<number>) {
-    //   state.value += action.payload
-    // },
+    setCurrentSquares(state, action: PayloadAction<number>) {
+      const index = action.payload;
+      if(state.currentTurn){
+        state.currentSquares[index] = 'X'
+        state.currentTurn = false; 
+      }
+      else{
+        state.currentSquares[index] = 'O'
+        state.currentTurn = true;
+      }
+    },
+    resetSquares(state){
+      state.winner = null;
+      state.currentTurn = true;
+      state.currentSquares = Array(9).fill(null);
+    }
   },
 })
 
 export default gameSlice
-// export const { } = gameSlice.actions
+export const { setCurrentSquares, resetSquares } = gameSlice.actions
