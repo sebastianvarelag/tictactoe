@@ -1,12 +1,22 @@
+import { useGameStore } from "../hooks";
+
 export const Modal = () => {
+  
+  const {winner, modalOpen, handleCloseModal} = useGameStore()
+
   return (
     <>
-      <div className="modal__container">
-        <div className="modal__content">
-          <h2>GAME OVER</h2>
-          <p>Player <span style={{color: '#FF8A8A'}}>X</span> wins!</p>
+      {
+        winner && (
+        <div className={`modal__container${modalOpen ? ' modal-open' : ' modal-close'}`}>
+          <div className="modal__content">
+            <h2>GAME OVER</h2>
+            <p>Player <span style={winner === 'X' ? {color: '#91DDCF'} : {color: '#FF8A8A'}}>{winner}</span> wins!</p>
+            <button className="button__modal" onClick={handleCloseModal}>CLOSE</button>
+          </div>
         </div>
-      </div>
+        )
+      }
     </>
   )
 }
