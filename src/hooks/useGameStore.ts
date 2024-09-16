@@ -45,9 +45,7 @@ export const useGameStore = () => {
 
   const handleCloseModal = () =>{
     dispatch(closeModal());
-    setTimeout(() => {
-      dispatch(resetSquares());
-    }, 1000);
+    dispatch(resetSquares());
   }
 
   return {
