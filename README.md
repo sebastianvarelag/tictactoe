@@ -12,7 +12,7 @@ Tic Tac Toe is a two-player game on a 3x3 grid where players take turns marking 
 - Responsive design works with desktop and mobile
 - Restart button of board game
 - Scoreboard in session play
-- 
+   
 ## Built with
 
 - React
